@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENDEN Control</title>
+    <!-- roslib.jsを読み込む -->
+    <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.js"></script>
+</head>
+<body>
+    <h1>DENDEN Control</h1>
+    <!-- ROSbridgeのIPアドレスを入力するフォーム -->
+    <form id="ipForm">
+        <label for="ipAddress">ROSbridge IP Address:</label>
+        <input type="text" id="ipAddress" name="ipAddress" required>
+        <button type="submit">Set IP Address</button>
+    </form>
+
+    <!-- スタートとストップボタン -->
+    <button onclick="sendStartMessage()">Start Hume</button>
+    <button onclick="sendStopMessage()">Stop Hume</button>
+
+    <script>
+        // フォームが送信されたときの処理
+        document.getElementById('ipForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // フォームのデフォルト動作を停止
+
+            var ipAddress = document.getElementById('ipAddress').value; // フォームからIPアドレスを取得
+            var rosbridgeURL = 'ws://' + ipAddress + ':9090'; // WebSocketのURLを構築
+
+            initializeROS(rosbridgeURL); // ROSの初期化関数を呼び出し
+        });
+
+        var ros; // ROSオブジェクト
+
+        // ROSを初期化する関数
+        function initializeROS(url) {
+            ros = new ROSLIB.Ros({
+                url: url // ROSbridgeのURL
+            });
+
+            ros.on('connection', function() {
+                console.log('Connected to ROSbridge');
+            });
+
+            ros.on('error', function(error) {
+                console.error('Error connecting to ROSbridge:', error);
+            });
+
+            ros.on('close', function() {
+                console.log('Connection to ROSbridge closed');
+            });
+        }
+
+        // ボタンクリック時の処理
+        function sendStartMessage() {
+            var controlTopic = new ROSLIB.Topic({
+                ros: ros,
+                name: '/control_topic',
+                messageType: 'std_msgs/String'
+            });
+
+            var startMsg = new ROSLIB.Message({
+                data: 'start_hume'
+            });
+
+            controlTopic.publish(startMsg);
+        }
+
+        function sendStopMessage() {
+            var controlTopic = new ROSLIB.Topic({
+                ros: ros,
+                name: '/control_topic',
+                messageType: 'std_msgs/String'
+            });
+
+            var stopMsg = new ROSLIB.Message({
+                data: 'stop_hume'
+            });
+
+            controlTopic.publish(stopMsg);
+        }
+    </script>
+</body>
+</html>

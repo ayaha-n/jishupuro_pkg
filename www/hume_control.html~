@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DENDEN Control</title>
+  <script src="https://unpkg.com/eventemitter2"></script>
+    <!-- roslib.jsを読み込む -->
+  <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.js"></script>
+
+
+  
+
+  <script>
+        // ROSブリッジに接続
+        var ros = new ROSLIB.Ros({
+	    // url: 'ws://' + getLocalIPAddress() + ':8085'
+	    url: 'ws://192.168.0.41:9090'  // ROSbridgeのURL
+        });
+
+        ros.on('connection', function() {
+            console.log('Connected to ROSbridge');
+        });
+
+        ros.on('error', function(error) {
+            console.error('Error connecting to ROSbridge:', error);
+        });
+
+        ros.on('close', function() {
+            console.log('Connection to ROSbridge closed');
+        });
+
+        // ボタンクリック時の処理
+        function sendStartMessage() {
+            var controlTopic = new ROSLIB.Topic({
+                ros: ros,
+                name: '/control_topic',
+                messageType: 'std_msgs/String'
+            });
+
+            var startMsg = new ROSLIB.Message({
+                data: 'start_hume'
+            });
+
+            controlTopic.publish(startMsg);
+        }
+
+        function sendStopMessage() {
+            var controlTopic = new ROSLIB.Topic({
+                ros: ros,
+                name: '/control_topic',
+                messageType: 'std_msgs/String'
+            });
+
+            var stopMsg = new ROSLIB.Message({
+                data: 'stop_hume'
+            });
+
+            controlTopic.publish(stopMsg);
+        }
+      function getLocalIPAddress() {
+          var connection = new RTCPeerConnection({iceServers: []});
+          connection.createDataChannel('');
+          connection.createOffer().then(function(offer) {
+              var localIPRegex = /(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/;
+              var localIP = localIPRegex.exec(offer.sdp)[1];
+              console.log('Local IP Address:', localIP);
+              document.getElementById('ip-address').innerText = localIP; // ページにIPアドレスを表示
+              return localIP;
+          });
+      }
+    </script>
+</head>
+<body>
+    <h1>DENDEN Control</h1>
+    <p>ROSbridge IP <span id="ip-address"></span>:8085</p>
+    <button onclick="sendStartMessage()">Start Hume</button>
+    <button onclick="sendStopMessage()">Stop Hume</button>
+</body>
+</html>
