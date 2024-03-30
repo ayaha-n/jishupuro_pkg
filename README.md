@@ -30,7 +30,7 @@ To launch a webpage, do these:
 roslaunch roswww roswww.launch 
 roslaunch rosbridge_server rosbridge_websocket.launch
 ```
-Now, visit http://<radxa's ip>:8085/jishupuro_pkg/hume_control_getip.html and fill in the blank with your radxa's IP adress, press #Set IP Address" button.
+Now, visit http://<radxa's ip>:8085/jishupuro_pkg/hume_control_getip.html and fill in the blank with your radxa's IP adress, press "Set IP Address" button.
 
 You can start the program by pressing "Start Hume", and stop it by "Stop Hume".
 
