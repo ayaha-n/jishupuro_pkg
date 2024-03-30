@@ -1,4 +1,5 @@
 # jishupuro_pkg
+This package enables you to demonstrate "denden-mushi", which picks up the sound with the microphone, analyzes the emotion using HUME API and expresses it with its eyes and cheek color.
 
 ## Supported devices
 * M5Stack用NeoPixel互換LED搭載 HEXボード: https://www.switch-science.com/products/6058?_pos=1&_sid=04326fe49&_ss=r
