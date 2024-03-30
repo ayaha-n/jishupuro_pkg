@@ -48,3 +48,7 @@ https://docs.google.com/presentation/d/1990HMAx-kUocaGTCPdmen9bIHAOFU23R76boXbFt
 ## Tips
 write
 `source ~/catkin_ws/devel/setup.bash` in bashrc so that you do not need to do it every time.
+
+## References
+https://gist.github.com/iory/59828a5f23969f81ee81e6c5a89a41c6 , 
+https://github.com/sawada10/eye-display
