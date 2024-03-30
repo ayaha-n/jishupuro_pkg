@@ -40,7 +40,7 @@ Get your API key at https://dev.hume.ai/intro
 ```
 nano ~/.bashrc
 ```
-Append " *export HUME_API="your_api_key"* "
+Append `export HUME_API="your_api_key"`
 ```
 source ~/.bashrc
 ```
@@ -49,3 +49,7 @@ source ~/.bashrc
 These websites will help you to rename ports of the devices.
 https://smdn.jp/electronics/udev_create_persistent_usb_device_symlink/ ,
 https://docs.google.com/presentation/d/1990HMAx-kUocaGTCPdmen9bIHAOFU23R76boXbFtALY/edit#slide=id.g25e40fad838_2_50 (p13)
+
+## Tips
+write
+`source ~/catkin_ws/devel/setup.bash` in bashrc so that you do not need to do it every time.
