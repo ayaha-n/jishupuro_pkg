@@ -14,6 +14,10 @@ rosrun rosserial_python serial_node.py _port:=/dev/ttyACM-righteye _baud:=57600 
 rosrun rosserial_python serial_node.py _port:=/dev/ttyACM-lefteye _baud:=57600 __name:=a &
 rosrun rosserial_python serial_node.py _port:=/dev/ttyACM-m5stack _baud:=57600 __name:=c &
 
+# launch the webpage
+roslaunch roswww roswww.launch &
+roslaunch rosbridge_server rosbridge_websocket.launch &
+
 # bluetoothスピーカの立ち上げ
 # python ~/rcb4eus/radxa/speak-jp/make_green.pyの内容
 #MACアドレスを指定
