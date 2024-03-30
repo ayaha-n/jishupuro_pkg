@@ -34,6 +34,17 @@ Now, visit http://<radxa's ip>:8085/jishupuro_pkg/hume_control_getip.html and fi
 
 You can start the program by pressing "Start Hume", and stop it by "Stop Hume".
 
+## Setting your HUME API key
+Get your API key at https://dev.hume.ai/intro
+
+```
+nano ~/.bashrc
+```
+Append " *export HUME_API="your_api_key"* "
+```
+source ~/.bashrc
+```
+
 ## How to rename ports
 These websites will help you to rename ports of the devices.
 https://smdn.jp/electronics/udev_create_persistent_usb_device_symlink/ ,
