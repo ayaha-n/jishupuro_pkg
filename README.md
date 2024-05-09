@@ -62,6 +62,12 @@ These websites will help you to rename ports of the devices.
 * https://smdn.jp/electronics/udev_create_persistent_usb_device_symlink/ ,
 * https://docs.google.com/presentation/d/1990HMAx-kUocaGTCPdmen9bIHAOFU23R76boXbFtALY/edit#slide=id.g25e40fad838_2_50 (p13)
 
+## Paring with speaker
+```
+wget https://gist.githubusercontent.com/iory/ecd4b6c19fd657df0979a96dab6c3d56/raw/936b0b3d1db1d669efb5e711b725ea7b363730a3/pairing_bt.py
+python3 pairing_bt.py
+```
+
 ## Tips
 write
 `source ~/catkin_ws/devel/setup.bash` in bashrc so that you do not need to do it every time.
