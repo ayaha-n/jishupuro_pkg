@@ -1,0 +1,5 @@
+# /etc/udev/rules.d/99-usb-54FC005900.rules
+
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d4", ATTRS{serial}=="54FC005900", SYMLINK+="ttyACM-righteye", GROUP="dialout"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d4", ATTRS{serial}=="52D2051942", SYMLINK+="ttyACM-m5stack", GROUP="dialout"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d4", ATTRS{serial}=="54FC005490", SYMLINK+="ttyACM-lefteye", GROUP="dialout"
