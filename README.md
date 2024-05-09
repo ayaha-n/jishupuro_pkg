@@ -35,6 +35,7 @@ To see the initial setup for python3.8 virtual environment, visit
 https://www.linuxcapable.com/how-to-install-python-3-8-on-debian-linux/#google_vignette .
 
 Now, visit http://<radxa's ip>:8085/jishupuro_pkg/hume_control_getip.html and fill in the blank with your radxa's IP adress, press "Set IP Address" button.
+Note that it may doesn't work on Chrome and please try on Safari in that case. (2024.5.9)
 
 You can start the program by pressing "Start Hume", and stop it by "Stop Hume".
 
