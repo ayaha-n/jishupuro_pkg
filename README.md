@@ -20,7 +20,6 @@ You may need to do this:
 ```
 sudo apt-get install ros-noetic-roswww
 cd ~/catkin_ws/src
-git clone --single-branch -b stereo-semi https://github.com/iory/jsk_demos
 ```
 
 You can test if devices are activated by doing this:
