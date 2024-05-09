@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 from __future__ import division
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 import os
 
 import shutil

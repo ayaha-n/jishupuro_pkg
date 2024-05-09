@@ -1,0 +1,52 @@
+<launch>
+
+  <include file="$(find jishupuro_pkg)/launch/speech_recognition_radxa.launch" >
+  </include>
+
+  <include file="$(find jishupuro_pkg)/launch/capture.launch" >
+  </include>
+
+  <node name="rosserial_righteye"
+	pkg="rosserial_python" type="serial_node.py"
+	output="screen" >
+    <rosparam>
+      port: /dev/ttyACM-righteye
+      baud: 57600
+    </rosparam>
+  </node>
+
+  <node name="rosserial_lefteye"
+	pkg="rosserial_python" type="serial_node.py"
+	output="screen" >
+    <rosparam>
+      port: /dev/ttyACM-lefteye
+      baud: 57600
+    </rosparam>
+  </node>
+
+  <node name="rosserial_m5stack"
+	pkg="rosserial_python" type="serial_node.py"
+	output="screen" >
+    <rosparam>
+      port: /dev/ttyACM-m5stack
+      baud: 57600
+    </rosparam>
+  </node>
+
+  <include file="$(find roswww)/launch/roswww.launch" >
+  </include>
+
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" >
+  </include>
+
+  <node name="bt_connect"
+	pkg="jishupuro_pkg" type="bt_connect.py"
+	output="screen" >
+  </node>
+
+  <node name="topic_subscriber"
+	pkg="jishupuro_pkg" type="topic_subscriber.py"
+	output="screen" >
+  </node>
+
+</launch>
