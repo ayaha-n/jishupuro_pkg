@@ -10,28 +10,19 @@ This package enables you to demonstrate "denden-mushi", which picks up the sound
 * Round Display Module with M5Stamp C3 (pio env name: stampc3) : https://www.switch-science.com/products/8098
 
 ## How to use
-To activate devices and launch the webpage, do:
+To start the program, do:
 ```
-roslaunch jishupuro_pkg demo_launch
+roslaunch jishupuro_pkg demo.launch
 ```
-You may need to do this:
-```
-sudo apt-get install ros-noetic-roswww
-cd ~/catkin_ws/src
-git clone --single-branch -b stereo-semi https://github.com/iory/jsk_demos
-```
+
 
 You can test if devices are activated by doing this:
 ```
 rostopic pub -1 /eye_status std_msgs/UInt16 "data: 6"
 ```
 
-
-To see the initial setup for python3.8 virtual environment, visit
-https://www.linuxcapable.com/how-to-install-python-3-8-on-debian-linux/#google_vignette .
-
 Now, visit http://<radxa's ip>:8085/jishupuro_pkg/hume_control_getip.html and fill in the blank with your radxa's IP adress, press "Set IP Address" button.
-Note that it may doesn't work on Chrome and please try on Safari in that case. (2024.5.9)
+If it doesn't work on Chrome, try on Safari.
 
 You can start the program by pressing "Start Hume", and stop it by "Stop Hume".
 
@@ -46,6 +37,14 @@ Append `export HUME_API="your_api_key"`
 source ~/.bashrc
 ```
 
+## Setup
+You may have to do these to execute the program.
+```
+sudo apt-get install ros-noetic-roswww
+cd ~/catkin_ws/src
+git clone --single-branch -b stereo-semi https://github.com/iory/jsk_demos
+```
+
 ## How to rename ports
 These websites will help you to rename ports of the devices.
 * https://smdn.jp/electronics/udev_create_persistent_usb_device_symlink/ ,
@@ -56,6 +55,10 @@ These websites will help you to rename ports of the devices.
 wget https://gist.githubusercontent.com/iory/ecd4b6c19fd657df0979a96dab6c3d56/raw/936b0b3d1db1d669efb5e711b725ea7b363730a3/pairing_bt.py
 python3 pairing_bt.py
 ```
+
+## If you don't have Python3.8 environment
+To see the initial setup for python3.8 virtual environment, visit
+https://www.linuxcapable.com/how-to-install-python-3-8-on-debian-linux/#google_vignette .
 
 ## Tips
 write
