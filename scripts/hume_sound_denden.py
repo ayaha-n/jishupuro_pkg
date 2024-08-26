@@ -198,19 +198,19 @@ async def classify_emotions(pred):
     neutral_scores = []
 
     for emotion in pred['emotions']: #predは辞書であってリストではないので上の行とまとめて書くのは無理
-        if emotion['name'] in ['Excitement','Interest','Admiration','Surprise (positive)','desire','Triumph', 'Ecstasy', 'Joy','Satisfaction','Amusement', 'Contentment']: #orで結ぶならif emotion['name'] == 'Excitement' or emotion['name'] == 'Interest' or ...
+        if emotion['name'] in ['Excitement','Interest','Admiration','Surprise (positive)','desire','Triumph', 'Ecstasy', 'Joy','Satisfaction','Amusement']: #orで結ぶならif emotion['name'] == 'Excitement' or emotion['name'] == 'Interest' or ...
             star_scores.append(emotion['score'])
-        elif emotion['name'] in ['Adoration','Love','Entrancement','Romance', 'Relief','Aesthetic Appreciation']:
+        elif emotion['name'] in ['Adoration','Love','Entrancement','Romance', 'Relief','Aesthetic Appreciation','Contentment']:
             heart_scores.append(emotion['score'])
-        elif emotion['name'] in ['Awkwardness','Disappointment','Distress','Anxiety','Sadness','Pain','Surprise (negative)','Fear','Empathic Pain','Horror']:
+        elif emotion['name'] in ['Awkwardness','Disappointment','Distress','Anxiety','Sadness','Pain','Surprise (negative)','Fear','Empathic Pain','Horror', 'Guilt']:
             sad_scores.append(emotion['score'])  
-        elif emotion['name'] in ['Anger', 'Disgust']:                                                     
+        elif emotion['name'] in ['Anger', 'Disgust', 'Contempt']:                                                     
             angry_scores.append(emotion['score'])  
-        elif emotion['name'] in ['Boredom','Tiredness','Contempt','Doubt']:     
+        elif emotion['name'] in ['Boredom','Tiredness']:     
             tired_scores.append(emotion['score'])
        # elif emotion['name'] in []:
         #    happy_scores.append(emotion['score'])
-        elif emotion['name'] in ['Calmness','Awe','Confusion','Embarrassment','Envy','Sympathy','Pride','Realization','Determination','Nostalgia','Craving','Concentration','Contemplation','Guilt','Shame']:                
+        elif emotion['name'] in ['Calmness','Awe','Confusion','Embarrassment','Envy','Sympathy','Pride','Realization','Determination','Nostalgia','Craving','Concentration','Contemplation','Doubt','Shame']:                
             neutral_scores.append(emotion['score'])
             
     avg_star_score = sum(star_scores)/len(star_scores) if star_scores else 0
