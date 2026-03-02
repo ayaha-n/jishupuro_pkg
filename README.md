@@ -15,12 +15,25 @@ To start the program, do:
 roslaunch jishupuro_pkg demo.launch
 ```
 
+If you see warning such as `2026-03-02 13:59:55+0900 [-] [WARN] [1772427595.099993]: Unable to start server: Couldn't listen on any:9090: [Errno 98] Address already in use. Retrying in 5s.
+` , try `lsof -i :9090` and kill that PID.
 
 You can test if devices are activated by doing this:
 ```
 rostopic pub -1 /eye_status std_msgs/UInt16 "data: 6"
 ```
 
+### Control with CLI
+To start emotion analyzing,
+```
+rostopic pub -1 /control_topic std_msgs/String "data: 'start_hume'" 
+```
+To finish,
+```
+rostopic pub -1 /control_topic std_msgs/String "data: 'stop_hume'"
+```
+
+### Control from Web (Safari only?)
 Now, visit http://<radxa's ip>:8085/jishupuro_pkg/hume_control_getip.html and fill in the blank with your radxa's IP adress, press "Set IP Address" button.
 If it doesn't work on Chrome, try on Safari.
 
